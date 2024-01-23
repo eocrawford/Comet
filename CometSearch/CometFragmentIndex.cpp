@@ -506,36 +506,36 @@ if (!(iWhichPeptide%5000))
             // If a peptide is modified, only store fragments that contain the modification
             // as unmodified fragments should already be stored.  I'm sure there's some
             // exception.
-            vector<unsigned int> dBionVector = g_arrvFragmentIndex[iWhichThread][BIN(dBion)];
-            size_t currentSize = dBionVector.size();
+            vector<unsigned int>* pdBionVector = &(g_arrvFragmentIndex[iWhichThread][BIN(dBion)]);
+            size_t currentSize = pdBionVector->size();
 
             if (currentSize < iEndPos)
-                  dBionVector.resize(iEndPos);
+                  pdBionVector->resize(iEndPos);
 
             if (modNumIdx >= 0)
             {
                if (bContainsBMod)
-                  dBionVector.push_back(uiCurrentFragmentPeptide);
+                  pdBionVector->push_back(uiCurrentFragmentPeptide);
             }
             else
-               dBionVector.push_back(uiCurrentFragmentPeptide);
+               pdBionVector->push_back(uiCurrentFragmentPeptide);
          }
 
          if (dYion > g_staticParams.options.dMinFragIndexMass && dYion < g_staticParams.options.dMaxFragIndexMass)
          {
-            vector<unsigned int> dYionVector = g_arrvFragmentIndex[iWhichThread][BIN(dYion)];
-            size_t currentSize = dYionVector.size();
+            vector<unsigned int>* pdYionVector = &(g_arrvFragmentIndex[iWhichThread][BIN(dYion)]);
+            size_t currentSize = pdYionVector->size();
 
             if (currentSize < iEndPos)
-               dYionVector.resize(iEndPos);
+               pdYionVector->resize(iEndPos);
 
             if (modNumIdx >= 0)
             {
                if (bContainsYMod)
-                  dYionVector.push_back(uiCurrentFragmentPeptide);
+                  pdYionVector->push_back(uiCurrentFragmentPeptide);
             }
             else
-               dYionVector.push_back(uiCurrentFragmentPeptide);
+               pdYionVector->push_back(uiCurrentFragmentPeptide);
          }
       }
    }
