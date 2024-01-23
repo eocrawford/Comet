@@ -1378,7 +1378,7 @@ void ProcessCmdLine(int argc,
       exit(1);
    }
 
-   strcpy(szParamsFile, "comet.params");
+   strcpy(szParamsFile, "C:\\Users\\ethancr\\Downloads\\comet\\comet.params");
 
    arg = argv[iStartInputFile];
 
