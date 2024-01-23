@@ -395,7 +395,7 @@ void LoadParameters(char *pszParamsFile,
                int iLen = (int)strlen(szParamVal);
                char *szTrimmed = szParamVal;
 
-               while (isspace(szTrimmed[iLen -1]))  // trim end
+               while (iLen > 0 && isspace(szTrimmed[iLen -1]))  // trim end
                   szTrimmed[--iLen] = 0;
                while (*szTrimmed && isspace(*szTrimmed))  // trim beginning
                {
@@ -433,7 +433,7 @@ void LoadParameters(char *pszParamsFile,
                int iLen = (int)strlen(szParamVal);
                char *szTrimmed = szParamVal;
 
-               while (isspace(szTrimmed[iLen -1]))  // trim end
+               while (iLen > 0 && isspace(szTrimmed[iLen -1]))  // trim end
                   szTrimmed[--iLen] = 0;
                while (*szTrimmed && isspace(*szTrimmed))  // trim beginning
                {
